@@ -13,29 +13,32 @@
  *
  * @package WordPress
  */
-
 // ** Heroku Postgres settings - from Heroku Environment ** //
 $db = parse_url($_ENV["DATABASE_URL"]);
-
+if($_SERVER["SERVER_NAME"]==="localhost") {
+define('DB_NAME', <DEV DB NAME HERE>);
+/** MySQL database username */
+define('DB_USER','root');
+/** MySQL database password */
+define('DB_PASSWORD','root');
+/** MySQL hostname */
+define('DB_HOST','localhost');
+} else {
+// ** Heroku Postgres settings - from Heroku Environment ** //
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-define('DB_NAME', trim($db["path"],"/"));
-
+define('DB_NAME',trim($db["path"],"/"));
 /** MySQL database username */
-define('DB_USER', $db["user"]);
-
+define('DB_USER',$db["user"]);
 /** MySQL database password */
-define('DB_PASSWORD', $db["pass"]);
-
+define('DB_PASSWORD',$db["pass"]);
 /** MySQL hostname */
-define('DB_HOST', $db["host"]);
-
+define('DB_HOST',$db["host"]);
+}
 /** Database Charset to use in creating database tables. */
-define('DB_CHARSET', 'utf8');
-
+define('DB_CHARSET','utf8');
 /** The Database Collate type. Don't change this if in doubt. */
-define('DB_COLLATE', '');
-
+define('DB_COLLATE','');
 /**#@+
  * Authentication Unique Keys and Salts.
  *
@@ -45,25 +48,22 @@ define('DB_COLLATE', '');
  *
  * @since 2.6.0
  */
-define('AUTH_KEY',         getenv('AUTH_KEY'));
-define('SECURE_AUTH_KEY',  getenv('SECURE_AUTH_KEY'));
-define('LOGGED_IN_KEY',    getenv('LOGGED_IN_KEY'));
-define('NONCE_KEY',        getenv('NONCE_KEY'));
-define('AUTH_SALT',        getenv('AUTH_SALT'));
-define('SECURE_AUTH_SALT', getenv('SECURE_AUTH_SALT'));
-define('LOGGED_IN_SALT',   getenv('LOGGED_IN_SALT'));
-define('NONCE_SALT',       getenv('NONCE_SALT'));
-
+define('AUTH_KEY',getenv('AUTH_KEY'));
+define('SECURE_AUTH_KEY',getenv('SECURE_AUTH_KEY'));
+define('LOGGED_IN_KEY',getenv('LOGGED_IN_KEY'));
+define('NONCE_KEY',getenv('NONCE_KEY'));
+define('AUTH_SALT',getenv('AUTH_SALT'));
+define('SECURE_AUTH_SALT',getenv('SECURE_AUTH_SALT'));
+define('LOGGED_IN_SALT',getenv('LOGGED_IN_SALT'));
+define('NONCE_SALT',getenv('NONCE_SALT'));
 /**#@-*/
-
 /**
  * WordPress Database Table prefix.
  *
  * You can have multiple installations in one database if you give each a unique
  * prefix. Only numbers, letters, and underscores please!
  */
-$table_prefix  = 'wp_';
-
+$table_prefix='wp_';
 /**
  * For developers: WordPress debugging mode.
  *
@@ -71,13 +71,10 @@ $table_prefix  = 'wp_';
  * It is strongly recommended that plugin and theme developers use WP_DEBUG
  * in their development environments.
  */
-define('WP_DEBUG', false);
-
+define('WP_DEBUG',false);
 /* That's all, stop editing! Happy blogging. */
-
 /** Absolute path to the WordPress directory. */
-if ( !defined('ABSPATH') )
-	define('ABSPATH', dirname(__FILE__) . '/');
-
+if(!defined('ABSPATH'))
+	define('ABSPATH',dirname(__FILE__).'/');
 /** Sets up WordPress vars and included files. */
-require_once(ABSPATH . 'wp-settings.php');
+require_once (ABSPATH.'wp-settings.php');
