@@ -16,7 +16,7 @@
 // ** Heroku Postgres settings - from Heroku Environment ** //
 $db = parse_url($_ENV["DATABASE_URL"]);
 if($_SERVER["SERVER_NAME"]==="localhost") {
-define('DB_NAME', <DEV DB NAME HERE>);
+define('DB_NAME', 'DEV DB NAME HERE');
 /** MySQL database username */
 define('DB_USER','root');
 /** MySQL database password */
