@@ -13,6 +13,12 @@
  *
  * @package WordPress
  */
+ 
+ define('WP_CACHE', true);
+ 
+ $sasl_memcached_config = array('default' => array( array('host' => '$_ENV["MEMCACHIER_SERVER"]', 'port' => '$_ENV["MEMCACHIER_PORT"]', 'user' => '$_ENV["MEMCACHIER_USERNAME"]', 'pass' => '$_ENV["MEMCACHIER_PASSWORD"]', ), ), );
+
+ 
 // ** Heroku Postgres settings - from Heroku Environment ** //
 $db = parse_url($_ENV["DATABASE_URL"]);
 if($_SERVER["SERVER_NAME"]==="localhost") {
