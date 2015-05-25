@@ -517,28 +517,3 @@ require get_template_directory() . '/inc/customizer.php';
 if ( ! class_exists( 'Featured_Content' ) && 'plugins.php' !== $GLOBALS['pagenow'] ) {
 	require get_template_directory() . '/inc/featured-content.php';
 }
-
-add_action( 'wp_enqueue_scripts', 'load_bootstrap' );
-
-function load_bootstrap () {
-	wp_register_script( 'bootstrap-js', get_template_directory_uri() . '-child' . '/js/bootstrap.min.js', array('jquery'), NULL, true );
-  //wp_register_script( 'jquery-js', get_template_directory_uri() . '-child' . '/js/jquery-1.11.2.min.js', array('jquery'), NULL, true );
-  wp_register_style( 'bootstrap-css', get_stylesheet_directory_uri() . '/css/bootstrap.min.css', false, NULL, 'all' );
-  wp_register_style( 'custom-css', get_stylesheet_directory_uri() . '/css/custom.css', false, NULL, 'all' );
-
-  wp_enqueue_script( 'bootstrap-js' );
-  
-  wp_enqueue_style( 'bootstrap-css' );
-  wp_enqueue_style( 'custom-css' );
-}
-
-add_filter('body_class', 'custom_body_class');
-
-function custom_body_class($classes){
-    if(is_user_logged_in()){
-        $classes[] = 'body-logged-in';
-    } else{
-        $classes[] = 'body-logged-out';
-    }
-    return $classes;
-}

@@ -15,6 +15,8 @@ Move this file to wp-content/object-cache.php
 if ( !defined( 'WP_CACHE_KEY_SALT' ) )
 	define( 'WP_CACHE_KEY_SALT', '' );
 
+if ($_SERVER["SERVER_NAME"] !== "localhost") {
+
 function wp_cache_add($key, $data, $group = '', $expire = 0) {
 	global $wp_object_cache;
 
@@ -386,5 +388,6 @@ class WP_Object_Cache {
 		$this->cache_hits =& $this->stats['get'];
 		$this->cache_misses =& $this->stats['add'];
 	}
+}
 }
 ?>
