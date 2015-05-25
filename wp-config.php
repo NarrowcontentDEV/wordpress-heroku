@@ -26,9 +26,13 @@ if ($_SERVER["SERVER_NAME"] === "localhost") {
 	define('DB_HOST', 'localhost');
 } else {
 
-	define('WP_HOME', '');
-	define('WP_SITEURL', '');
+	// define('WP_HOME', '');
+	// define('WP_SITEURL', '');
 
+	// define('WP_CACHE', true);
+	// $sasl_memcached_config = array('default' => array( array('host' => '$_ENV["MEMCACHIER_SERVER"]', 'port' => '$_ENV["MEMCACHIER_PORT"]',     'user' => '$_ENV["MEMCACHIER_USERNAME"]', 'pass' => '$_ENV["MEMCACHIER_PASSWORD"]', ), ), );
+	
+	
 	// ** Heroku Postgres settings - from Heroku Environment ** //
 	// ** MySQL settings - You can get this info from your web host ** //
 	/** The name of the database for WordPress */
